@@ -1,3 +1,5 @@
+## [1.2.2] 2024-08-31
+* Upgrade example app dependencies cupertino_icons
 ## [1.2.1] 2023-12-21
 * Flutter 3.16 updates
 ## [1.2.0] 2023-10-27
