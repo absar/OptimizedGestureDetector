@@ -126,9 +126,7 @@ class OptimizedGestureDetector extends StatelessWidget {
           }
         }
 
-        if (_tapDownCallback != null) {
-          _tapDownCallback!(details);
-        }
+        _tapDownCallback?.call(details);
       },
       onTapUp: (details) {
         Util.L1("onTapUp", details);
@@ -157,9 +155,7 @@ class OptimizedGestureDetector extends StatelessWidget {
         _isSingleTap = false;
         _isDoubleTap = false;
         _cancelAndResetSingleTapTimer();
-        if (_tapCancelCallback != null) {
-          _tapCancelCallback!();
-        }
+        _tapCancelCallback?.call();
       },
       onLongPressStart: (details) {
         Util.L1("onLongPressStart", details);
@@ -218,64 +214,48 @@ class OptimizedGestureDetector extends StatelessWidget {
 
   void _singleTap(TapUpDetails details) {
     Util.L1("_singleTap", details);
-    if (_singleTapCallback != null) {
-      _singleTapCallback!(details);
-    }
+    _singleTapCallback?.call(details);
   }
 
   void _doubleTap(TapUpDetails details) {
     Util.L1("_doubleTap", details);
-    if (_doubleTapCallback != null) {
-      _doubleTapCallback!(details);
-    }
+    _doubleTapCallback?.call(details);
   }
 
   /// _drag* methods means long press then move
   void _dragStart(LongPressStartDetails details) {
     Util.L1("_dragStart", details);
-    if (_dragStartCallback != null) {
-      _dragStartCallback!(details);
-    }
+    _dragStartCallback?.call(details);
   }
 
   void _dragUpdate(LongPressMoveUpdateDetails details) {
     Util.L1("_dragUpdate", details);
-    if (_dragUpdateCallback != null) {
-      _dragUpdateCallback!(details);
-    }
+    _dragUpdateCallback?.call(details);
   }
 
   void _dragEnd(LongPressEndDetails details) {
     Util.L1("_dragEnd", details);
-    if (_dragEndCallback != null) {
-      _dragEndCallback!(details);
-    }
+    _dragEndCallback?.call(details);
   }
 
   /// _move* methods means tap then move
   void _moveStart(scale.OpsSStartDetails details) {
     Util.L1("_moveStart", details);
     _resetLastMoveUpdatePos();
-    if (_moveStartCallback != null) {
-      _moveStartCallback!(DetailsUtils.toOpsMoveStartDetails(details));
-    }
+    _moveStartCallback?.call(DetailsUtils.toOpsMoveStartDetails(details));
   }
 
   void _moveUpdate(scale.OpsSUpdateDetails details) {
     Util.L1("_moveUpdate", details);
-    if (_moveUpdateCallback != null) {
-      _moveUpdateCallback!(DetailsUtils.toOpsMoveUpdateDetails(details));
-    }
+    _moveUpdateCallback?.call(DetailsUtils.toOpsMoveUpdateDetails(details));
     _lastMoveUpdateGolbalPos = details.focalPoint;
     _lastMoveUpdateLocalPos = details.localFocalPoint;
   }
 
   void _moveEnd(scale.OpsSEndDetails details) {
     Util.L1("_moveEnd", details);
-    if (_moveEndCallback != null) {
-      _moveEndCallback!(DetailsUtils.toOpsMoveEndDetails(details,
-          _lastMoveUpdateGolbalPos ?? ZERO, _lastMoveUpdateLocalPos ?? ZERO));
-    }
+    _moveEndCallback?.call(DetailsUtils.toOpsMoveEndDetails(details,
+        _lastMoveUpdateGolbalPos ?? ZERO, _lastMoveUpdateLocalPos ?? ZERO));
     _resetLastMoveUpdatePos();
   }
 
@@ -283,9 +263,7 @@ class OptimizedGestureDetector extends StatelessWidget {
     Util.L2("_moveCancel");
     _isMoveCancel = true;
     _resetLastMoveUpdatePos();
-    if (_moveCancelCallback != null) {
-      _moveCancelCallback!();
-    }
+    _moveCancelCallback?.call();
   }
 
   /// _scale* methods means zoom then move
@@ -293,9 +271,7 @@ class OptimizedGestureDetector extends StatelessWidget {
     Util.L1("_scaleStart", details);
     _resetScaleDirection();
     _resetLastScaleUpdatePos();
-    if (_scaleStartCallback != null) {
-      _scaleStartCallback!(DetailsUtils.toOpsScaleStartDetails(details));
-    }
+    _scaleStartCallback?.call(DetailsUtils.toOpsScaleStartDetails(details));
   }
 
   void _scaleUpdate(scale.OpsSUpdateDetails details) {
@@ -318,10 +294,8 @@ class OptimizedGestureDetector extends StatelessWidget {
         }
 
         Util.L2("direction $_scaleMainDirection");
-        if (_scaleUpdateCallback != null) {
-          _scaleUpdateCallback!(DetailsUtils.toOpsScaleUpdateDetails(
-              details, _scaleMainDirection));
-        }
+        _scaleUpdateCallback?.call(
+            DetailsUtils.toOpsScaleUpdateDetails(details, _scaleMainDirection));
       }
     }
     _lastScaleUpdateGolbalPos = details.focalPoint;
@@ -331,10 +305,8 @@ class OptimizedGestureDetector extends StatelessWidget {
   void _scaleEnd(scale.OpsSEndDetails details) {
     Util.L1("_scaleEnd", details);
     _resetScaleDirection();
-    if (_scaleEndCallback != null) {
-      _scaleEndCallback!(DetailsUtils.toOpsScaleEndDetails(details,
-          _lastScaleUpdateGolbalPos ?? ZERO, _lastScaleUpdateLocalPos ?? ZERO));
-    }
+    _scaleEndCallback?.call(DetailsUtils.toOpsScaleEndDetails(details,
+        _lastScaleUpdateGolbalPos ?? ZERO, _lastScaleUpdateLocalPos ?? ZERO));
     _resetLastScaleUpdatePos();
   }
 
@@ -343,9 +315,7 @@ class OptimizedGestureDetector extends StatelessWidget {
     _isScaleCancel = true;
     _resetScaleDirection();
     _resetLastScaleUpdatePos();
-    if (_scaleCancelCallback != null) {
-      _scaleCancelCallback!();
-    }
+    _scaleCancelCallback?.call();
   }
 
   void _resetLastMoveUpdatePos() {

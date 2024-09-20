@@ -1,3 +1,5 @@
+## [1.3.0] 2024-09-20
+* BREAKING: Update minimum supported Flutter to 3.22, Dart to 3.3
 ## [1.2.2] 2024-08-31
 * Upgrade example app dependencies cupertino_icons
 ## [1.2.1] 2023-12-21
