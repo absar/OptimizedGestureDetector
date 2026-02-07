@@ -1,3 +1,10 @@
+## [1.4.0] 2026-02-07
+* BREAKING: Flutter 3.38 updates
+* BREAKING: Bump minimum supported Flutter version to 3.35
+* Upgrade example app to Gradle 8.14 and Gradle Plugin DSL
+* Upgrade example sourceCompatibility JavaVersion.VERSION_17, targetCompatibility JavaVersion.VERSION_17
+* Upgrade example Kotlin to 2.2.21
+
 ## [1.3.2] 2025-08-03
 * Flutter 3.32 updates
 ## [1.3.1] 2024-10-08
