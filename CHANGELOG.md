@@ -1,3 +1,6 @@
+## [1.4.2] 2026-05-06
+* Flutter 3.41 updates
+ 
 ## [1.4.1] 2026-04-07
 * Upgrade example dependency cupertino_icons
 ## [1.4.0] 2026-02-07
