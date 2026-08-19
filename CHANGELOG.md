@@ -1,3 +1,6 @@
+## [1.4.3] 2026-08-19
+* Upgrade dependencies
+
 ## [1.4.2] 2026-05-06
 * Flutter 3.41 updates
  
